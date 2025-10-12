@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr71j7reophyv"]
+
+[ext_resource type="Texture2D" uid="uid://yaa8cu6ll4yl" path="res://icon.svg" id="1_4rtn3"]
+[ext_resource type="Script" uid="uid://ctq2rrwjriw4u" path="res://_Game/Projetiles/sniper_fly_bullet.gd" id="1_ik45q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ik45q"]
+size = Vector2(12, 14)
+
+[node name="sniper_fly_bullet" type="Area2D"]
+script = ExtResource("1_ik45q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.09765628, 0.11328128)
+texture = ExtResource("1_4rtn3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ik45q")

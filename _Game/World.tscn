@@ -1,21 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://dh82sm3hp4uge"]
+[gd_scene load_steps=8 format=3 uid="uid://dh82sm3hp4uge"]
 
 [ext_resource type="Script" uid="uid://colnhxccyu2tk" path="res://_Game/Env/world.gd" id="1_86mnr"]
 [ext_resource type="PackedScene" uid="uid://cek7nisxjbmu3" path="res://_Game/Characters/Player/player.tscn" id="1_l6iyx"]
 [ext_resource type="PackedScene" uid="uid://c4npb6fvups74" path="res://_Game/Projetiles/player_bullet.tscn" id="2_dinhe"]
 [ext_resource type="PackedScene" uid="uid://d1x5lquatacs3" path="res://_Game/Characters/Enemies/boss.tscn" id="2_omcye"]
 [ext_resource type="PackedScene" uid="uid://cah3nh6tsirks" path="res://_Game/Projetiles/bullet_boss.tscn" id="3_n1owh"]
+[ext_resource type="PackedScene" uid="uid://bmht6cj2g3nfy" path="res://_Game/Characters/Enemies/mini_enimies/Sniper/sniper_fly.tscn" id="4_62d7j"]
+[ext_resource type="PackedScene" uid="uid://bhcu7kggdpwh4" path="res://_Game/Env/point_grid_moviment.tscn" id="6_7k6pd"]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" node_paths=PackedStringArray("Gridpoint")]
 script = ExtResource("1_86mnr")
 laserPlayer = ExtResource("2_dinhe")
 laserBoss = ExtResource("3_n1owh")
+sniper_fly = ExtResource("4_62d7j")
+Gridpoint = NodePath("PointGridMoviment")
 
 [node name="Player" parent="." instance=ExtResource("1_l6iyx")]
 position = Vector2(119, 559)
 
 [node name="Boss" parent="." instance=ExtResource("2_omcye")]
 position = Vector2(1641, 253)
+
+[node name="PointGridMoviment" parent="." instance=ExtResource("6_7k6pd")]
 
 [connection signal="spawn_laser" from="Player" to="." method="_on_player_spawn_laser"]
 [connection signal="spawn_laser_boss" from="Boss" to="." method="_on_boss_spawn_laser_boss"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmht6cj2g3nfy"]
+
+[ext_resource type="Script" uid="uid://b31vp3ovioix" path="res://_Game/Characters/Enemies/mini_enimies/Sniper/sniper_fly.gd" id="1_2y8k4"]
+[ext_resource type="Texture2D" uid="uid://yaa8cu6ll4yl" path="res://icon.svg" id="1_bqq0y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2y8k4"]
+size = Vector2(56, 56)
+
+[node name="sniper_fly" type="CharacterBody2D"]
+script = ExtResource("1_2y8k4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.3841858e-07, 0)
+scale = Vector2(0.4375, 0.4375)
+texture = ExtResource("1_bqq0y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2y8k4")

@@ -15,6 +15,14 @@ signal spawn_laser(location)
 ##Referencia do timer do FireRate
 @export var timer_invincibility:Timer
 
+##Referencia do timer do cooldown do shield
+@export var timer_shield:Timer
+
+##Referencia do timer do cooldown do shield
+@export var timer_colldown_shield:Timer
+
+@export var CollisionShield:CollisionShape2D
+
 ##Velocidade do player
 @export var speed:float = 300.0
 
@@ -33,28 +41,39 @@ signal spawn_laser(location)
 ## Cadência do tiro
 @export var fire_rate:float = 0.25
 
+## Tempo do cooldown do shield
+@export var cooldown_shield:float = 3.0
+
 var input_vector:Vector2 = Vector2.ZERO
 
 func _ready() -> void:
-	timer_dash.set_wait_time(duration_dash)
-	timer_fire_rate.set_wait_time(fire_rate)
-	timer_invincibility.set_wait_time(duration_invisibility)
+	init_timers()
 	set_process(true)
 
 func _physics_process(delta: float) -> void:
-	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	input_vector.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	update_move_input()
 	
 	#usando o dash
 	if Input.is_action_just_pressed("dash"):
-		timer_dash.start()
-		timer_invincibility.start()
-		speed *= dash_speed_times
+		dash()
 	
 	global_position += input_vector * speed * delta
 	
 	if Input.is_action_pressed("shoot") and timer_fire_rate.is_stopped():
 		shoot()
+	
+	if Input.is_action_just_pressed("shield"):
+		shield()
+
+func init_timers():
+	timer_dash.set_wait_time(duration_dash)
+	timer_fire_rate.set_wait_time(fire_rate)
+	timer_invincibility.set_wait_time(duration_invisibility)
+	timer_colldown_shield.set_wait_time(cooldown_shield)
+
+func update_move_input():
+	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	input_vector.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 
 func take_damage(damage:int):
 	hp -= damage
@@ -65,8 +84,17 @@ func take_damage(damage:int):
 func shoot():
 	emit_signal("spawn_laser", muzzle.global_position)
 	timer_fire_rate.start()
-	timer_invincibility.start()
 
+func dash():
+	timer_dash.start()
+	timer_invincibility.start()
+	speed *= dash_speed_times
+
+func shield():
+	if timer_colldown_shield.is_stopped():
+		CollisionShield.disabled = false
+		timer_colldown_shield.start()
+		timer_shield.start()
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is Boss:
@@ -75,3 +103,7 @@ func _on_area_entered(area: Area2D) -> void:
 func _on_dash_timer_timeout() -> void:
 	#reseta a velocidade
 	speed /= dash_speed_times
+
+
+func _on_shield_timeout() -> void:
+	CollisionShield.disabled = true
