@@ -23,6 +23,8 @@ signal spawn_laser(location)
 
 @export var CollisionShield:CollisionShape2D
 
+@export var AnimationPlayerSprite:AnimatedSprite2D
+
 ##Velocidade do player
 @export var speed:float = 300.0
 
@@ -30,7 +32,7 @@ signal spawn_laser(location)
 @export var dash_speed_times:int = 3
 
 ##Vida do player
-@export var hp:int = 1
+@export var hp:int = 5
 
 ## Duração do dash
 @export var duration_dash:float = 1.0
@@ -47,6 +49,7 @@ signal spawn_laser(location)
 var input_vector:Vector2 = Vector2.ZERO
 
 func _ready() -> void:
+	AnimationPlayerSprite.play("Idle")
 	init_timers()
 	set_process(true)
 
@@ -97,7 +100,7 @@ func shield():
 		timer_shield.start()
 
 func _on_area_entered(area: Area2D) -> void:
-	if area is Boss:
+	if area.is_in_group("Enimies"):
 		area.take_damage(1)
 
 func _on_dash_timer_timeout() -> void:
@@ -107,3 +110,8 @@ func _on_dash_timer_timeout() -> void:
 
 func _on_shield_timeout() -> void:
 	CollisionShield.disabled = true
+
+
+func _on_area_colision_shield_area_entered(area: Area2D) -> void:
+		if area.is_in_group("Enimies"):
+			area.take_damage(1)

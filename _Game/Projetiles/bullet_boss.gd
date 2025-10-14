@@ -5,6 +5,8 @@ class_name Kamikaze
 
 @export var my_grid:GlobalConfigWord.grid_spawnable_enimies = GlobalConfigWord.grid_spawnable_enimies.GRID_3
 
+@export var AnimationControler:AnimatedSprite2D
+
 var player_ref:Player
 var player_position:Vector2
 
@@ -12,6 +14,8 @@ var grid_point_ref
 var grid_max_distanceX:float 
 
 func _ready() -> void:
+	
+	AnimationControler.play("Idle")
 	if player_ref != null:
 		player_position = player_ref.global_position
 		

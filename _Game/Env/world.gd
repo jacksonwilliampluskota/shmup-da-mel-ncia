@@ -5,6 +5,7 @@ class_name  GridPoint
 
 @export var laserBoss:PackedScene
 @export var sniper_fly:PackedScene
+@export var brutao:PackedScene
 
 @export var Gridpoint:Node2D
 
@@ -12,6 +13,7 @@ class_name  GridPoint
 var grid_tile_size:float = 100
 
 func _ready() -> void:
+	GlobalConfigWord.main_world = self
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _on_player_spawn_laser(location: Variant) -> void:
@@ -21,7 +23,7 @@ func _on_player_spawn_laser(location: Variant) -> void:
 
 
 func _on_boss_spawn_laser_boss(location: Variant) -> void:
-	var l = laserBoss.instantiate()
+	var l = brutao.instantiate()
 	l.global_position = location
 	l.player_ref = $Player
 	l.grid_point_ref = $PointGridMoviment

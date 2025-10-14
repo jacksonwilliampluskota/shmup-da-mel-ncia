@@ -12,3 +12,5 @@ enum grid_spawnable_enimies {
 	GRID_4 = 4,      
 	GRID_5 = 5      
 }
+
+var main_world:GridPoint

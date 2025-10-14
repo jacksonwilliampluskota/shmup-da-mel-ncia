@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw8550rx06qsw"]
+
+[ext_resource type="Script" uid="uid://c7k4k6hotwsnr" path="res://_Game/Characters/Enemies/mini_enimies/explosive_cocoon/explosive_cocoon.gd" id="1_15wcj"]
+[ext_resource type="Texture2D" uid="uid://yaa8cu6ll4yl" path="res://icon.svg" id="1_dmkyd"]
+[ext_resource type="PackedScene" uid="uid://bwuxsp3jxl453" path="res://_Game/Projetiles/explosive_cocoon_bullet.tscn" id="2_hkvjk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15wcj"]
+size = Vector2(127, 129)
+
+[node name="ExplosiveCocoon" type="Area2D"]
+collision_layer = 68
+collision_mask = 11
+script = ExtResource("1_15wcj")
+my_bullet = ExtResource("2_hkvjk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dmkyd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_15wcj")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -64)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(-58, -57)
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(-59, 60)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(54, -57)
+
+[node name="Marker2D5" type="Marker2D" parent="."]
+position = Vector2(57, 57)
+
+[node name="Marker2D6" type="Marker2D" parent="."]
+position = Vector2(1, 69)

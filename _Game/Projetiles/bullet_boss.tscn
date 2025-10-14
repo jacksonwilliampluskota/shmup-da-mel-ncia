@@ -1,22 +1,81 @@
-[gd_scene load_steps=4 format=3 uid="uid://cah3nh6tsirks"]
+[gd_scene load_steps=15 format=3 uid="uid://cah3nh6tsirks"]
 
-[ext_resource type="Texture2D" uid="uid://yaa8cu6ll4yl" path="res://icon.svg" id="1_1a1g5"]
 [ext_resource type="Script" uid="uid://dr87d0usymlgr" path="res://_Game/Projetiles/bullet_boss.gd" id="1_6dvxb"]
+[ext_resource type="Texture2D" uid="uid://b4b1586ljtnhq" path="res://_Game/Assets/Kamikaze/Attack/Kamikaze_Attack_0.png" id="2_aoq4w"]
+[ext_resource type="Texture2D" uid="uid://b5mabaxa0d2eg" path="res://_Game/Assets/Kamikaze/Attack/Kamikaze_Attack_1.png" id="3_leypa"]
+[ext_resource type="Texture2D" uid="uid://b3g7fpvk6obet" path="res://_Game/Assets/Kamikaze/Attack/Kamikaze_Attack_2.png" id="4_y4j1e"]
+[ext_resource type="Texture2D" uid="uid://d8y5jnkewtqw" path="res://_Game/Assets/Kamikaze/Attack/Kamikaze_Attack_3.png" id="5_sxstg"]
+[ext_resource type="Texture2D" uid="uid://cm83kadddya3g" path="res://_Game/Assets/Kamikaze/Attack/Kamikaze_Attack_4.png" id="6_mwoxe"]
+[ext_resource type="Texture2D" uid="uid://dw3bwh386811p" path="res://_Game/Assets/Kamikaze/Idle/Kamikaze_Idle_0.png" id="7_0tnqf"]
+[ext_resource type="Texture2D" uid="uid://ehq4v0q5oy6y" path="res://_Game/Assets/Kamikaze/Idle/Kamikaze_Idle_1.png" id="8_pumwu"]
+[ext_resource type="Texture2D" uid="uid://bamd3vbkemtpu" path="res://_Game/Assets/Kamikaze/Idle/Kamikaze_Idle_2.png" id="9_p1o0d"]
+[ext_resource type="Texture2D" uid="uid://b1vn4vpu401wq" path="res://_Game/Assets/Kamikaze/Idle/Kamikaze_Idle_3.png" id="10_eh5hi"]
+[ext_resource type="Texture2D" uid="uid://dwmbjb4nh21oh" path="res://_Game/Assets/Kamikaze/Idle/Kamikaze_Idle_4.png" id="11_ak627"]
+[ext_resource type="Texture2D" uid="uid://dgcxe280sij1j" path="res://_Game/Assets/Kamikaze/Idle/Kamikaze_Idle_5.png" id="12_6rt0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6dvxb"]
-size = Vector2(44, 53)
+size = Vector2(188, 142)
 
-[node name="Bullet_Boss" type="Area2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_285a3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aoq4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_leypa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y4j1e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sxstg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mwoxe")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_0tnqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pumwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_p1o0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_eh5hi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ak627")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6rt0q")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 12.0
+}]
+
+[node name="Bullet_Boss" type="Area2D" node_paths=PackedStringArray("AnimationControler") groups=["Enimies"]]
+scale = Vector2(0.2, 0.2)
 collision_layer = 16
 collision_mask = 35
 script = ExtResource("1_6dvxb")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.3515625, 0.40625)
-texture = ExtResource("1_1a1g5")
+AnimationControler = NodePath("AnimationControler")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
+position = Vector2(122, 19)
 shape = SubResource("RectangleShape2D_6dvxb")
+
+[node name="AnimationControler" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_285a3")
+animation = &"Idle"
+frame_progress = 0.9085341
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

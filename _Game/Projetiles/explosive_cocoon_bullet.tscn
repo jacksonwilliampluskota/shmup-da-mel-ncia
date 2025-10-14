@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwuxsp3jxl453"]
+
+[ext_resource type="Script" uid="uid://bvlfqnt36henn" path="res://_Game/Projetiles/explosive_cocoon_bullet.gd" id="1_7dp02"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e6ik5"]
+
+[node name="explosive_cocoon_bullet" type="Area2D"]
+collision_layer = 128
+collision_mask = 43
+script = ExtResource("1_7dp02")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e6ik5")
