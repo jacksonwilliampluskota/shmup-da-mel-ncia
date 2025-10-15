@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://fswdl5qoprkb"]
+
+[ext_resource type="Texture2D" uid="uid://d0ka182l34jfw" path="res://_Game/Assets/VFXs/PlayerSpecialProjectile/T_PlayerSpecialProjectile_0000.png" id="1_3hl85"]
+[ext_resource type="Texture2D" uid="uid://c5xjoilgqsayi" path="res://_Game/Assets/VFXs/PlayerSpecialProjectile/T_PlayerSpecialProjectile_0001.png" id="2_an1pm"]
+[ext_resource type="Texture2D" uid="uid://uruq3wnsqium" path="res://_Game/Assets/VFXs/PlayerSpecialProjectile/T_PlayerSpecialProjectile_0002.png" id="3_n1h7t"]
+[ext_resource type="Texture2D" uid="uid://dosqxqf8pxu5k" path="res://_Game/Assets/VFXs/PlayerSpecialProjectile/T_PlayerSpecialProjectile_0003.png" id="4_65x66"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rho4"]
+size = Vector2(180, 133)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1csgj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3hl85")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_an1pm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n1h7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_65x66")
+}],
+"loop": true,
+"name": &"Anim_Projectile",
+"speed": 12.0
+}]
+
+[node name="Area2D" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(28, 5.5)
+shape = SubResource("RectangleShape2D_2rho4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1csgj")
+animation = &"Anim_Projectile"
+frame_progress = 0.3412658
