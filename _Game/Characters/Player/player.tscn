@@ -206,6 +206,7 @@ animations = [{
 }]
 
 [node name="Player" type="Area2D" node_paths=PackedStringArray("muzzle", "timer_dash", "timer_fire_rate", "timer_invincibility", "timer_shield", "timer_colldown_shield", "CollisionShield", "AnimationPlayerSprite") groups=["Player"]]
+scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 213
 script = ExtResource("1_f1xmu")
@@ -217,6 +218,8 @@ timer_shield = NodePath("TimersControl/Shield")
 timer_colldown_shield = NodePath("TimersControl/CooldownShield")
 CollisionShield = NodePath("AreaColisionShield/CollisionShield")
 AnimationPlayerSprite = NodePath("AnimationPlayer")
+duration_dash = 0.6
+duration_invisibility = 0.6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_xaa0j")
