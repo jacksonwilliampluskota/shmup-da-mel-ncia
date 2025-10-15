@@ -13,4 +13,13 @@ enum grid_spawnable_enimies {
 	GRID_5 = 5      
 }
 
+enum direction_spawnable_bullet {  
+ UP,
+LEFT_UP,
+LEFT_DOWN,
+DOWN,
+RIGHT_DOWN,
+RIGHT_UP     
+}
+
 var main_world:GridPoint
