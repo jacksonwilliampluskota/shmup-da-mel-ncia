@@ -1,21 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4npb6fvups74"]
+[gd_scene load_steps=8 format=3 uid="uid://c4npb6fvups74"]
 
-[ext_resource type="Texture2D" uid="uid://yaa8cu6ll4yl" path="res://icon.svg" id="1_5cs8x"]
 [ext_resource type="Script" uid="uid://cu20e3b3fi760" path="res://_Game/Projetiles/player_bullet.gd" id="1_hyqn6"]
+[ext_resource type="Texture2D" uid="uid://dgt7kfaqgae5p" path="res://_Game/Assets/VFXs/PlayerProjectile/T_PlayerProjectile_0000.png" id="2_37h3u"]
+[ext_resource type="Texture2D" uid="uid://b5llwuvemjh2r" path="res://_Game/Assets/VFXs/PlayerProjectile/T_PlayerProjectile_0001.png" id="3_fahds"]
+[ext_resource type="Texture2D" uid="uid://b03ubjr5lo374" path="res://_Game/Assets/VFXs/PlayerProjectile/T_PlayerProjectile_0002.png" id="4_c1whc"]
+[ext_resource type="Texture2D" uid="uid://dtc720nc78kna" path="res://_Game/Assets/VFXs/PlayerProjectile/T_PlayerProjectile_0003.png" id="5_2j7ih"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hyqn6"]
-size = Vector2(16, 18)
+size = Vector2(18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d3j7u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_37h3u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fahds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c1whc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2j7ih")
+}],
+"loop": true,
+"name": &"Anim_Projectile",
+"speed": 12.0
+}]
 
 [node name="playerBullet" type="Area2D"]
+scale = Vector2(2, 2)
 collision_layer = 8
 collision_mask = 149
 script = ExtResource("1_hyqn6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.12695314, 0.14160155)
-texture = ExtResource("1_5cs8x")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_hyqn6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-6, 0)
+scale = Vector2(0.122070305, 0.122070305)
+sprite_frames = SubResource("SpriteFrames_d3j7u")
+animation = &"Anim_Projectile"
+frame_progress = 0.8063101
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
