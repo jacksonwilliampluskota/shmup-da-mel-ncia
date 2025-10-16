@@ -24,7 +24,6 @@ var grid_point_ref
 var go_to:Vector2
 var rng = RandomNumberGenerator.new()
 
-
 func _ready() -> void:
 	if grid_point_ref != null:
 		go_to = grid_point_ref.get_children()[my_grid].get_children()[rng.randf_range(0.0, 4.0)].global_position
@@ -45,6 +44,8 @@ func take_damage(damage:int):
 func explode():
 	for i in range(directions.size()):
 		var b = my_bullet.instantiate()
+		
+		b.speed = b.speed * rng.randf_range(0.75, 1.25)
 		b.direction = directions[i]
 		b.global_position = Initials_positions[i].global_position
 		GlobalConfigWord.main_world.add_child(b)

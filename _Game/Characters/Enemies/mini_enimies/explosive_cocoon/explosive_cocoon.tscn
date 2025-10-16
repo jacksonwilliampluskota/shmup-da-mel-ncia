@@ -5,39 +5,45 @@
 [ext_resource type="PackedScene" uid="uid://bwuxsp3jxl453" path="res://_Game/Projetiles/explosive_cocoon_bullet.tscn" id="2_hkvjk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15wcj"]
-size = Vector2(127, 129)
+size = Vector2(126, 128)
 
 [node name="ExplosiveCocoon" type="Area2D" node_paths=PackedStringArray("Initials_positions") groups=["Enimies"]]
 collision_layer = 132
 collision_mask = 11
 script = ExtResource("1_15wcj")
 my_bullet = ExtResource("2_hkvjk")
-Initials_positions = [NodePath("up"), NodePath("LeftUp"), NodePath("LeftDown"), NodePath("RightUp"), NodePath("RightDown"), NodePath("down")]
-directions = Array[int]([0, 1, 2, 5, 4, 3])
+Initials_positions = [NodePath("up"), NodePath("LeftUp"), NodePath("Left"), NodePath("LeftDown"), NodePath("down"), NodePath("RightDown"), NodePath("Right"), NodePath("RightUp")]
+directions = Array[int]([0, 1, 2, 3, 4, 5, 6, 7])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_dmkyd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0.5)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_15wcj")
 
 [node name="up" type="Marker2D" parent="."]
 position = Vector2(0, -64)
 
 [node name="LeftUp" type="Marker2D" parent="."]
-position = Vector2(-58, -57)
+position = Vector2(-64, -64)
+
+[node name="Left" type="Marker2D" parent="."]
+position = Vector2(-64, 0)
 
 [node name="LeftDown" type="Marker2D" parent="."]
-position = Vector2(-59, 60)
-
-[node name="RightUp" type="Marker2D" parent="."]
-position = Vector2(54, -57)
-
-[node name="RightDown" type="Marker2D" parent="."]
-position = Vector2(57, 57)
+position = Vector2(-64, 65)
 
 [node name="down" type="Marker2D" parent="."]
-position = Vector2(1, 69)
+position = Vector2(0, 65)
+
+[node name="RightUp" type="Marker2D" parent="."]
+position = Vector2(63, -64)
+
+[node name="Right" type="Marker2D" parent="."]
+position = Vector2(63, 0)
+
+[node name="RightDown" type="Marker2D" parent="."]
+position = Vector2(63, 65)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

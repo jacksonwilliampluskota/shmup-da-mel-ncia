@@ -9,11 +9,16 @@ extends Area2D
 
 @export var direction:GlobalConfigWord.direction_spawnable_bullet
 
+
+
+
 func _physics_process(delta: float) -> void:
-	
 	if direction == GlobalConfigWord.direction_spawnable_bullet.LEFT_UP:
 		global_position.x += -speed * delta
 		global_position.y += -speed * delta
+		
+	if direction == GlobalConfigWord.direction_spawnable_bullet.LEFT:
+		global_position.x += -speed * delta
 	
 	if direction == GlobalConfigWord.direction_spawnable_bullet.LEFT_DOWN:
 		global_position.x += -speed * delta
@@ -22,6 +27,10 @@ func _physics_process(delta: float) -> void:
 	if direction == GlobalConfigWord.direction_spawnable_bullet.RIGHT_DOWN:
 		global_position.x += speed * delta
 		global_position.y += speed * delta
+		
+		
+	if direction == GlobalConfigWord.direction_spawnable_bullet.RIGHT:
+		global_position.x += speed * delta
 	
 	if direction == GlobalConfigWord.direction_spawnable_bullet.RIGHT_UP:
 		global_position.x += speed * delta

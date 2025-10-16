@@ -16,9 +16,11 @@ enum grid_spawnable_enimies {
 enum direction_spawnable_bullet {  
  UP,
 LEFT_UP,
+LEFT,
 LEFT_DOWN,
 DOWN,
 RIGHT_DOWN,
+RIGHT,
 RIGHT_UP     
 }
 
