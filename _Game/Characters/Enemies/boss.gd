@@ -4,7 +4,9 @@ class_name Boss
 @export var muzzle:Marker2D
 signal spawn_laser_boss(location)
 
-var hp:int = 100
+@export var hp:int = 100
+
+var boss_state:GlobalConfigWord.boss_state
 
 
 func take_damage(damage:int):
@@ -22,4 +24,6 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 func _on_timer_timeout() -> void:
+	#exemplo random enum
+	#State.keys()[randi() % State.size()]
 	emit_signal("spawn_laser_boss", muzzle.global_position)

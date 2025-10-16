@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://fswdl5qoprkb"]
+[gd_scene load_steps=8 format=3 uid="uid://fswdl5qoprkb"]
 
 [ext_resource type="Texture2D" uid="uid://d0ka182l34jfw" path="res://_Game/Assets/VFXs/PlayerSpecialProjectile/T_PlayerSpecialProjectile_0000.png" id="1_3hl85"]
+[ext_resource type="Script" uid="uid://dnwdd1mqddhtr" path="res://_Game/Projetiles/player_specialbullet.gd" id="1_an1pm"]
 [ext_resource type="Texture2D" uid="uid://c5xjoilgqsayi" path="res://_Game/Assets/VFXs/PlayerSpecialProjectile/T_PlayerSpecialProjectile_0001.png" id="2_an1pm"]
 [ext_resource type="Texture2D" uid="uid://uruq3wnsqium" path="res://_Game/Assets/VFXs/PlayerSpecialProjectile/T_PlayerSpecialProjectile_0002.png" id="3_n1h7t"]
 [ext_resource type="Texture2D" uid="uid://dosqxqf8pxu5k" path="res://_Game/Assets/VFXs/PlayerSpecialProjectile/T_PlayerSpecialProjectile_0003.png" id="4_65x66"]
@@ -28,7 +29,10 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Area2D" type="Area2D"]
+[node name="player_special_bullet" type="Area2D"]
+collision_layer = 8
+collision_mask = 21
+script = ExtResource("1_an1pm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(28, 5.5)
@@ -37,4 +41,7 @@ shape = SubResource("RectangleShape2D_2rho4")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1csgj")
 animation = &"Anim_Projectile"
-frame_progress = 0.3412658
+autoplay = "Anim_Projectile"
+frame_progress = 0.689585
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

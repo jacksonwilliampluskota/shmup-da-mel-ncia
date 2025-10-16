@@ -1,7 +1,6 @@
-[gd_scene load_steps=48 format=3 uid="uid://cek7nisxjbmu3"]
+[gd_scene load_steps=47 format=3 uid="uid://cek7nisxjbmu3"]
 
 [ext_resource type="Script" uid="uid://b30mah3map4po" path="res://_Game/Characters/Player/player.gd" id="1_f1xmu"]
-[ext_resource type="Texture2D" uid="uid://yaa8cu6ll4yl" path="res://icon.svg" id="1_xaa0j"]
 [ext_resource type="Texture2D" uid="uid://g2cysp8tvgwn" path="res://_Game/Assets/Dragonmelon/Attack01/DragonMelon_Attack_01_00.png" id="3_cp5u2"]
 [ext_resource type="Texture2D" uid="uid://qw1rop7s8o1c" path="res://_Game/Assets/Dragonmelon/Idle/DragonMelon_Idle_00.png" id="3_x5vwd"]
 [ext_resource type="Texture2D" uid="uid://x3i3lyyrc0gm" path="res://_Game/Assets/Dragonmelon/Idle/DragonMelon_Idle_01.png" id="4_3rn73"]
@@ -44,12 +43,6 @@
 [ext_resource type="Texture2D" uid="uid://bps5tweeo2kk1" path="res://_Game/Assets/Dragonmelon/Damage/DragonMelon_Damage_6.png" id="31_bjhcr"]
 [ext_resource type="Texture2D" uid="uid://15jcnyhvydko" path="res://_Game/Assets/Dragonmelon/Dodge/DragonMelon_Dodge_00.png" id="32_u1pum"]
 [ext_resource type="Texture2D" uid="uid://2e52jwu2yawh" path="res://_Game/Assets/Dragonmelon/Dodge/DragonMelon_Dodge_01.png" id="33_lanff"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1xmu"]
-size = Vector2(130, 128)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_f1xmu"]
-radius = 138.17743
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_twj2a"]
 animations = [{
@@ -205,6 +198,12 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_olgwf"]
+radius = 122.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f1xmu"]
+radius = 204.0098
+
 [node name="Player" type="Area2D" node_paths=PackedStringArray("muzzle", "timer_dash", "timer_fire_rate", "timer_invincibility", "timer_shield", "timer_colldown_shield", "CollisionShield", "AnimationPlayerSprite") groups=["Player"]]
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
@@ -221,11 +220,15 @@ AnimationPlayerSprite = NodePath("AnimationPlayer")
 duration_dash = 0.6
 duration_invisibility = 0.6
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_xaa0j")
+[node name="AnimationPlayer" type="AnimatedSprite2D" parent="."]
+rotation = 3.1415927
+scale = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_twj2a")
+animation = &"Idle"
+frame_progress = 0.083223775
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_f1xmu")
+shape = SubResource("CircleShape2D_olgwf")
 
 [node name="Muzzle" type="Marker2D" parent="."]
 position = Vector2(109, 2)
@@ -258,12 +261,6 @@ collision_mask = 149
 [node name="CollisionShield" type="CollisionShape2D" parent="AreaColisionShield"]
 shape = SubResource("CircleShape2D_f1xmu")
 disabled = true
-
-[node name="AnimationPlayer" type="AnimatedSprite2D" parent="."]
-scale = Vector2(-1, 1)
-sprite_frames = SubResource("SpriteFrames_twj2a")
-animation = &"Idle"
-frame_progress = 0.083223775
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="TimersControl/dashTimer" to="." method="_on_dash_timer_timeout"]

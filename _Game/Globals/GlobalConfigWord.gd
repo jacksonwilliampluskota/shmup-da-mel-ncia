@@ -24,4 +24,11 @@ RIGHT,
 RIGHT_UP     
 }
 
+enum boss_state {
+	BLUE_BULLET,
+	RED_BULLET,
+	SUMMONING,
+	SPECIAL
+}
+
 var main_world:GridPoint

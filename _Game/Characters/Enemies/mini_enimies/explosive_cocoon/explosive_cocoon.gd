@@ -48,7 +48,8 @@ func explode():
 		b.speed = b.speed * rng.randf_range(0.75, 1.25)
 		b.direction = directions[i]
 		b.global_position = Initials_positions[i].global_position
-		GlobalConfigWord.main_world.add_child(b)
+		GlobalConfigWord.main_world.call_deferred("add_child", b)
+		#GlobalConfigWord.main_world.add_child(b)
 	
 	queue_free()
 	
