@@ -1,8 +1,124 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw8550rx06qsw"]
+[gd_scene load_steps=31 format=3 uid="uid://cw8550rx06qsw"]
 
 [ext_resource type="Script" uid="uid://c7k4k6hotwsnr" path="res://_Game/Characters/Enemies/mini_enimies/explosive_cocoon/explosive_cocoon.gd" id="1_15wcj"]
-[ext_resource type="Texture2D" uid="uid://yaa8cu6ll4yl" path="res://icon.svg" id="1_dmkyd"]
 [ext_resource type="PackedScene" uid="uid://bwuxsp3jxl453" path="res://_Game/Projetiles/explosive_cocoon_bullet.tscn" id="2_hkvjk"]
+[ext_resource type="Texture2D" uid="uid://duj0unge0wpyt" path="res://_Game/Assets/Casulo/Death/Casulo_Death_00.png" id="3_jgj6r"]
+[ext_resource type="Texture2D" uid="uid://eenj6bcblbpb" path="res://_Game/Assets/Casulo/Death/Casulo_Death_01.png" id="4_t21rg"]
+[ext_resource type="Texture2D" uid="uid://cx6v2x4bjnupt" path="res://_Game/Assets/Casulo/Death/Casulo_Death_02.png" id="5_yelpe"]
+[ext_resource type="Texture2D" uid="uid://7tnb18shk3fp" path="res://_Game/Assets/Casulo/Death/Casulo_Death_03.png" id="6_7mx8x"]
+[ext_resource type="Texture2D" uid="uid://txb8iclgswo8" path="res://_Game/Assets/Casulo/Death/Casulo_Death_04.png" id="7_efj8s"]
+[ext_resource type="Texture2D" uid="uid://b1mydcnfrdfl6" path="res://_Game/Assets/Casulo/Death/Casulo_Death_05.png" id="8_7ihha"]
+[ext_resource type="Texture2D" uid="uid://dqpm1jpdr3wgm" path="res://_Game/Assets/Casulo/Death/Casulo_Death_06.png" id="9_27b56"]
+[ext_resource type="Texture2D" uid="uid://8d72rmy5bnxt" path="res://_Game/Assets/Casulo/Death/Casulo_Death_07.png" id="10_mtwi4"]
+[ext_resource type="Texture2D" uid="uid://bajnr3yortofv" path="res://_Game/Assets/Casulo/Death/Casulo_Death_08.png" id="11_2sbff"]
+[ext_resource type="Texture2D" uid="uid://rfasya1hkhtt" path="res://_Game/Assets/Casulo/Death/Casulo_Death_09.png" id="12_cra6q"]
+[ext_resource type="Texture2D" uid="uid://c7jl3gylmpnv" path="res://_Game/Assets/Casulo/Death/Casulo_Death_10.png" id="13_o2jn7"]
+[ext_resource type="Texture2D" uid="uid://dwvw7fcypwnvh" path="res://_Game/Assets/Casulo/Death/Casulo_Death_11.png" id="14_rotip"]
+[ext_resource type="Texture2D" uid="uid://mh6btmg2sh0h" path="res://_Game/Assets/Casulo/Death/Casulo_Death_12.png" id="15_3j3bp"]
+[ext_resource type="Texture2D" uid="uid://c3s5mp00wqexq" path="res://_Game/Assets/Casulo/Idle/Casulo_Idle_00.png" id="16_hw3po"]
+[ext_resource type="Texture2D" uid="uid://dgqv1r7gb80ec" path="res://_Game/Assets/Casulo/Idle/Casulo_Idle_01.png" id="17_ps45a"]
+[ext_resource type="Texture2D" uid="uid://cioa60fxymm7n" path="res://_Game/Assets/Casulo/Idle/Casulo_Idle_02.png" id="18_2u3qa"]
+[ext_resource type="Texture2D" uid="uid://ceuxlh4pv8qkx" path="res://_Game/Assets/Casulo/Idle/Casulo_Idle_03.png" id="19_ikoun"]
+[ext_resource type="Texture2D" uid="uid://bqr28elsv5fjo" path="res://_Game/Assets/Casulo/Idle/Casulo_Idle_04.png" id="20_wxn62"]
+[ext_resource type="Texture2D" uid="uid://bnqgedhq5surg" path="res://_Game/Assets/Casulo/Idle/Casulo_Idle_05.png" id="21_o7yni"]
+[ext_resource type="Texture2D" uid="uid://balny13wah7v0" path="res://_Game/Assets/Casulo/Idle/Casulo_Idle_06.png" id="22_u7x66"]
+[ext_resource type="Texture2D" uid="uid://ijvooh4ph1ib" path="res://_Game/Assets/Casulo/Idle/Casulo_Idle_07.png" id="23_jbc3r"]
+[ext_resource type="Texture2D" uid="uid://cafflljgsk1hx" path="res://_Game/Assets/Casulo/Idle/Casulo_Idle_08.png" id="24_b2as6"]
+[ext_resource type="Texture2D" uid="uid://dar5w2vb0leb4" path="res://_Game/Assets/Casulo/Idle/Casulo_Idle_09.png" id="25_fqs0x"]
+[ext_resource type="Texture2D" uid="uid://dgb5x70gickce" path="res://_Game/Assets/Casulo/Idle/Casulo_Idle_10.png" id="26_fnx0l"]
+[ext_resource type="Texture2D" uid="uid://2rmlfcw2s2th" path="res://_Game/Assets/Casulo/Idle/Casulo_Idle_11.png" id="27_0cnur"]
+[ext_resource type="Texture2D" uid="uid://ccmj1cs1t6ooi" path="res://_Game/Assets/Casulo/Idle/Casulo_Idle_12.png" id="28_6mgcn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_15t0u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jgj6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t21rg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yelpe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7mx8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_efj8s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7ihha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_27b56")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mtwi4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2sbff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_cra6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_o2jn7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_rotip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3j3bp")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_hw3po")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ps45a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_2u3qa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ikoun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_wxn62")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_o7yni")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_u7x66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_jbc3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_b2as6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_fqs0x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_fnx0l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_0cnur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_6mgcn")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 16.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_15wcj"]
 size = Vector2(126, 128)
@@ -15,8 +131,12 @@ my_bullet = ExtResource("2_hkvjk")
 Initials_positions = [NodePath("up"), NodePath("LeftUp"), NodePath("Left"), NodePath("LeftDown"), NodePath("down"), NodePath("RightDown"), NodePath("Right"), NodePath("RightUp")]
 directions = Array[int]([0, 1, 2, 3, 4, 5, 6, 7])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_dmkyd")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.9999998, -7.9999995)
+scale = Vector2(0.31640625, 0.31640625)
+sprite_frames = SubResource("SpriteFrames_15t0u")
+animation = &"Idle"
+frame_progress = 0.994754
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
