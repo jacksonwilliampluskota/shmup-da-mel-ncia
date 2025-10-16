@@ -1,0 +1,82 @@
+[gd_resource type="VisualShader" load_steps=7 format=3 uid="uid://bwonut2l7mdao"]
+
+[ext_resource type="Texture2D" uid="uid://bq6srkjd1bwv4" path="res://_Game/Assets/BG/T_Bush_01.png" id="1_j64h8"]
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_j64h8"]
+default_input_values = [1, Vector2(1, 1), 2, Vector2(100, 0)]
+expanded_output_ports = [0]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_j64h8"]
+texture = ExtResource("1_j64h8")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_j64h8"]
+parameter_name = "Texture2DParameter"
+texture_type = 1
+texture_repeat = 1
+texture_source = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_oqju4"]
+texture = ExtResource("1_j64h8")
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_v708m"]
+default_input_values = [1, Vector2(1, 1), 2, Vector2(100, 0)]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_vtx_2;
+uniform sampler2D Texture2DParameter : source_color, repeat_enable, hint_screen_texture;
+uniform sampler2D tex_lgt_4 : source_color;
+
+
+
+void vertex() {
+// UVFunc:3
+	vec2 n_in3p1 = vec2(1.00000, 1.00000);
+	vec2 n_in3p2 = vec2(100.00000, 0.00000);
+	vec2 n_out3p0 = n_in3p2 * n_in3p1 + UV;
+
+
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_vtx_2, n_out3p0);
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out2p0.xyz);
+
+
+}
+
+void light() {
+// UVFunc:3
+	vec2 n_in3p1 = vec2(1.00000, 1.00000);
+	vec2 n_in3p2 = vec2(100.00000, 0.00000);
+	vec2 n_out3p0 = n_in3p2 * n_in3p1 + UV;
+
+
+// Texture2D:4
+	vec4 n_out4p0 = texture(tex_lgt_4, n_out3p0);
+
+
+// Output:0
+	DIFFUSE_LIGHT = vec3(n_out4p0.xyz);
+
+
+}
+"
+nodes/vertex/0/position = Vector2(460, 200)
+nodes/vertex/2/node = SubResource("VisualShaderNodeTexture_oqju4")
+nodes/vertex/2/position = Vector2(140, 360)
+nodes/vertex/3/node = SubResource("VisualShaderNodeUVFunc_v708m")
+nodes/vertex/3/position = Vector2(-100, 280)
+nodes/vertex/connections = PackedInt32Array(3, 0, 2, 0, 2, 0, 0, 6)
+nodes/light/0/position = Vector2(380, 260)
+nodes/light/3/node = SubResource("VisualShaderNodeUVFunc_j64h8")
+nodes/light/3/position = Vector2(-80, 260)
+nodes/light/4/node = SubResource("VisualShaderNodeTexture_j64h8")
+nodes/light/4/position = Vector2(180, 240)
+nodes/light/5/node = SubResource("VisualShaderNodeTexture2DParameter_j64h8")
+nodes/light/5/position = Vector2(-120, 420)
+nodes/light/connections = PackedInt32Array(3, 0, 4, 0, 4, 0, 0, 0, 5, 0, 4, 2)
