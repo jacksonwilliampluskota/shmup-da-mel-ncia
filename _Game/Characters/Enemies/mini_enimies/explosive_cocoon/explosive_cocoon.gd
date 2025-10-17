@@ -26,19 +26,19 @@ var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	if grid_point_ref != null:
-		go_to = grid_point_ref.get_children()[my_grid].get_children()[rng.randf_range(0.0, 4.0)].global_position
+		go_to = grid_point_ref.get_children()[my_grid].get_children()[2].global_position
 
 func _physics_process(delta: float) -> void:
-	var direction = (go_to - global_position).normalized()
-	
 	if global_position.x >= go_to.x:
-		global_position += direction * speed * delta
+		global_position.x += -speed * delta
+	else:
+		explode()
 
 func take_damage(damage:int):
 	hp -= damage
 	
 	if hp <= 0:
-		explode()
+		queue_free()
 		
 
 func explode():

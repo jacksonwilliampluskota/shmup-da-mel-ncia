@@ -1,7 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://df4l6otrpqdbr"]
+[gd_scene load_steps=9 format=3 uid="uid://df4l6otrpqdbr"]
 
-[ext_resource type="Texture2D" uid="uid://yaa8cu6ll4yl" path="res://icon.svg" id="1_4vo7c"]
 [ext_resource type="Script" uid="uid://dyy2c0si61myl" path="res://_Game/Characters/Enemies/mini_enimies/brutao/brutao.gd" id="1_w1nre"]
+[ext_resource type="Texture2D" uid="uid://d1dnqiafyp4ql" path="res://_Game/Assets/Brutao/Idle/Brutao_Idle_0.png" id="2_fg4bq"]
+[ext_resource type="Texture2D" uid="uid://bq2adjc2tcdl2" path="res://_Game/Assets/Brutao/Idle/Brutao_Idle_1.png" id="3_cclqp"]
+[ext_resource type="Texture2D" uid="uid://b3vc1fipsk8dl" path="res://_Game/Assets/Brutao/Idle/Brutao_Idle_2.png" id="4_fjlci"]
+[ext_resource type="Texture2D" uid="uid://cq3bvket37is6" path="res://_Game/Assets/Brutao/Idle/Brutao_Idle_3.png" id="5_p736k"]
+[ext_resource type="Texture2D" uid="uid://b04v2iy7kv2i1" path="res://_Game/Assets/Brutao/Idle/Brutao_Idle_4.png" id="6_m2dsm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_66ii0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fg4bq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cclqp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fjlci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_p736k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_m2dsm")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 12.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1nre"]
 size = Vector2(128, 127)
@@ -11,11 +38,15 @@ collision_layer = 4
 collision_mask = 139
 script = ExtResource("1_w1nre")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_4vo7c")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5, -25)
+scale = Vector2(0.54833335, 0.57166666)
+sprite_frames = SubResource("SpriteFrames_66ii0")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.35723293
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_w1nre")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

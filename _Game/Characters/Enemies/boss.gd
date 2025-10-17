@@ -1,7 +1,6 @@
 extends Area2D
 class_name Boss
 
-@export var muzzle:Marker2D
 signal spawn_laser_boss(location:Array[Vector2], state)
 
 @export var hp:int = 100
@@ -12,6 +11,7 @@ signal spawn_laser_boss(location:Array[Vector2], state)
 
 var boss_state:GlobalConfigWord.boss_state
 var rng = RandomNumberGenerator.new()
+var old_global_state
 
 
 
@@ -31,24 +31,30 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_timer_timeout() -> void:
 	#exemplo random enum
-	var global_state = GlobalConfigWord.boss_state.keys()[randi() % GlobalConfigWord.boss_state.size()]
+	var global_state = GlobalConfigWord.boss_state.values()[randi() % GlobalConfigWord.boss_state.size()]
 	
-	var all_position_shoot:Array
+	if old_global_state == global_state:
+		_on_timer_timeout()
+		return
+	
+	var all_position_shoot:Array[Vector2]
 	var position_shoot
+	
 	
 	match global_state:
 		GlobalConfigWord.boss_state.BLUE_BULLET:
-			position_shoot = position_basic_bullet[rng.randf_range(0, 1)].global_position
+			position_shoot = position_basic_bullet[rng.randi_range(0, 1)].global_position
 			all_position_shoot.append(position_shoot)
 		GlobalConfigWord.boss_state.RED_BULLET:
-			position_shoot = position_basic_bullet[rng.randf_range(0, 1)].global_position
+			position_shoot = position_basic_bullet[rng.randi_range(0, 1)].global_position
 			all_position_shoot.append(position_shoot)
 		GlobalConfigWord.boss_state.SUMMONING:
-			for i in 7:
+			for i in 8:
 				all_position_shoot.append(mini_enimies_spawns.get_children()[randi() % mini_enimies_spawns.get_child_count()].global_position)
 		GlobalConfigWord.boss_state.SPECIAL:
-			all_position_shoot.append(position_special_bullet.position)
-		_: # Default case (like 'default' in switch-case)
-			print("Unknown player state.")
+			all_position_shoot.append(position_special_bullet.global_position)
 	
+	old_global_state = global_state
 	emit_signal("spawn_laser_boss", all_position_shoot, global_state)
+	
+	
