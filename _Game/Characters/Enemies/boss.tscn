@@ -482,11 +482,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yys0w"]
 size = Vector2(264, 421)
 
-[node name="Boss" type="Area2D" node_paths=PackedStringArray("muzzle") groups=["Boss", "Enimies"]]
+[node name="Boss" type="Area2D" node_paths=PackedStringArray("muzzle", "position_basic_bullet", "position_special_bullet", "mini_enimies_spawns") groups=["Boss", "Enimies"]]
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_yys0w")
 muzzle = NodePath("ShootPointer/SpecialMuzzle")
+position_basic_bullet = [NodePath("ShootPointer/TopMuzzle"), NodePath("ShootPointer/ButtonMuzzle")]
+position_special_bullet = NodePath("ShootPointer/SpecialMuzzle")
+mini_enimies_spawns = NodePath("mini_enimies_spawns")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ftxst")
@@ -498,7 +501,7 @@ frame_progress = 0.18737592
 position = Vector2(-139, 147.5)
 shape = SubResource("RectangleShape2D_yys0w")
 
-[node name="ShootPointer" type="Node" parent="."]
+[node name="ShootPointer" type="Node2D" parent="."]
 
 [node name="SpecialMuzzle" type="Marker2D" parent="ShootPointer"]
 position = Vector2(-311, 91)
@@ -513,7 +516,7 @@ position = Vector2(-325, 271)
 wait_time = 3.0
 autostart = true
 
-[node name="mini_enimies_spawns" type="Node" parent="."]
+[node name="mini_enimies_spawns" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="mini_enimies_spawns"]
 position = Vector2(464, -698)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsdxwpc4aa5r1"]
+
+[ext_resource type="Script" uid="uid://b37f1mhvq44r" path="res://_Game/Projetiles/boss_red_bullet.gd" id="1_um6oc"]
+[ext_resource type="Texture2D" uid="uid://twnat78yumv0" path="res://_Game/Assets/VFXs/EnemyProjectile/T_ProjectileEnemies_02.png" id="1_x15wy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_um6oc"]
+radius = 58.24088
+
+[node name="BossRedBullet" type="Area2D"]
+collision_layer = 64
+collision_mask = 35
+script = ExtResource("1_um6oc")
+
+[node name="BulletSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_x15wy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_um6oc")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

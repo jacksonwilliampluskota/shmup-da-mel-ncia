@@ -27,6 +27,8 @@ signal special_spawn_laser(location)
 
 @export var AnimationPlayerSprite:AnimatedSprite2D
 
+@export var ShieldSprite:Sprite2D
+
 ##Velocidade do player
 @export var speed:float = 300.0
 
@@ -119,6 +121,7 @@ func dash():
 
 func shield():
 	if timer_colldown_shield.is_stopped():
+		ShieldSprite.visible = true
 		CollisionShield.disabled = false
 		timer_colldown_shield.start()
 		timer_shield.start()
@@ -134,6 +137,7 @@ func _on_dash_timer_timeout() -> void:
 
 func _on_shield_timeout() -> void:
 	CollisionShield.disabled = true
+	ShieldSprite.visible = false
 
 
 func _on_area_colision_shield_area_entered(area: Area2D) -> void:

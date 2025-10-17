@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjjd215n7n87j"]
+
+[ext_resource type="Script" uid="uid://r15rdxku2afa" path="res://_Game/Projetiles/boss_blue_bullet.gd" id="1_3juvj"]
+[ext_resource type="Texture2D" uid="uid://cghkqudwbrbgj" path="res://_Game/Assets/VFXs/EnemyProjectile/T_ProjectileEnemies_03.png" id="1_m66yd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3juvj"]
+radius = 52.34501
+
+[node name="BossBlueBullet" type="Area2D" groups=["Enimies"]]
+collision_layer = 128
+collision_mask = 35
+script = ExtResource("1_3juvj")
+
+[node name="BlueBulletSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_m66yd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3juvj")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

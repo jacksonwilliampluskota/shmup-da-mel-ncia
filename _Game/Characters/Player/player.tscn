@@ -205,7 +205,7 @@ radius = 122.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_f1xmu"]
 radius = 204.0098
 
-[node name="Player" type="Area2D" node_paths=PackedStringArray("muzzle", "timer_dash", "timer_fire_rate", "timer_invincibility", "timer_shield", "timer_colldown_shield", "CollisionShield", "AnimationPlayerSprite") groups=["Player"]]
+[node name="Player" type="Area2D" node_paths=PackedStringArray("muzzle", "timer_dash", "timer_fire_rate", "timer_invincibility", "timer_shield", "timer_colldown_shield", "CollisionShield", "AnimationPlayerSprite", "ShieldSprite") groups=["Player"]]
 scale = Vector2(0.5, 0.5)
 collision_layer = 2
 collision_mask = 213
@@ -218,6 +218,7 @@ timer_shield = NodePath("TimersControl/Shield")
 timer_colldown_shield = NodePath("TimersControl/CooldownShield")
 CollisionShield = NodePath("AreaColisionShield/CollisionShield")
 AnimationPlayerSprite = NodePath("AnimationPlayer")
+ShieldSprite = NodePath("AreaColisionShield/ShieldVisual")
 duration_dash = 0.6
 duration_invisibility = 0.6
 
@@ -263,7 +264,8 @@ collision_mask = 149
 shape = SubResource("CircleShape2D_f1xmu")
 disabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="AreaColisionShield"]
+[node name="ShieldVisual" type="Sprite2D" parent="AreaColisionShield"]
+visible = false
 scale = Vector2(0.96875, 0.96875)
 texture = ExtResource("44_cp5u2")
 
